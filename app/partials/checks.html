@@ -1,0 +1,19 @@
+
+<div class="row-fluid container">
+
+    <div class='container-fluid'>
+        <input type="text" ng-model="checksFilter"  class="form-control pull-right" placeholder="Search ... "> 
+        <!-- <input class="rounded-div pull-right" type="text" ng-model="checksFilter" placeholder="Search..."/>  -->
+    </div>
+    <br />
+    <div class="panel panel-default" >
+            
+        <div class="panel-heading "> List of Checks</div>
+        <ul class="list-group" ng-repeat="check in checksList | filter: checksFilter">
+              <li class="list-group-item"> <a href="#/checks/{{check}}"> {{check}}</a></li>
+        </ul>
+
+    </div>
+
+</div>
+      

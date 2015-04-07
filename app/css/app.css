@@ -1,0 +1,53 @@
+/* app css stylesheet */
+
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+
+.menu:before {
+  content: "[";
+}
+
+.menu:after {
+  content: "]";
+}
+
+.menu > li {
+  display: inline;
+}
+
+.menu > li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
+
+.menu > li:nth-child(1):before {
+  content: "";
+  padding: 0;
+}
+
+.panel-group {
+  margin-bottom: 5px; 
+}
+
+.panel-default .panel-heading { 
+  background-color: #AAACB1;
+}
+
+.navbar-default{
+  background-color: #0E0E11;
+}
+.well {
+  background-color: #E1E2E7;
+}
+
+.table>tbody>tr>td.danger {
+  background-color: #C24A4A;
+}
+
+.table>tbody>tr>td.warning {
+  background-color: #F0DB40;
+}

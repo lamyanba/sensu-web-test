@@ -1,0 +1,56 @@
+<div class="row-fluid container">
+
+    <div class="well well-sm">
+            <h3 class="text-center header-fonts">Client: {{client.name}}</h3>
+            <!-- <input class="rounded-div pull-right" type="text" ng-model="checksFilter" placeholder="Search..."/>  -->
+    </div>
+
+    <div class="well well-sm">
+
+        <div class="panel panel-default" >
+            <div class="panel-heading"> Client Info </div>
+
+            <ul class="list-group" ng-repeat="(key, value) in client">
+                <li ng-if="key == 'timestamp'"  class="list-group-item">{{key}} :   {{value * 1000 | date:'yyyy-MM-dd HH:mm:ss'}}</li>
+                <li ng-if="key != 'timestamp'" class="list-group-item">{{key}} :   {{value}}</li>
+            </ul>
+
+
+        </div>
+    </div>
+    <div class="well well-sm">
+     
+        <div class="panel panel-default">
+           
+                
+            <div class="panel-heading"> Associated Checks </div>
+
+            <table class="table table-bordered" >
+                <tr>
+                    <th>Check </th>
+                    <th>Status</th>
+                    <th>Last Check Time</th>
+                    <th>Subscription</th>
+                </tr>
+                <tr ng-repeat="check in clientChecks" ng-switch on="check.last_status">
+                    <td> <a href="#/checks/{{check.name}}"> {{check.name}} </a> </td>
+                        <td class="success" ng-switch-when='0'> Ok </td>
+                        <td class="warning" ng-switch-when='1'> Warning</td>
+                        <td class="danger" ng-switch-when='2'> Critical</td>
+                        <td class="info" ng-switch-default> Unknown </td>
+                    
+                    <td> {{check.last_execution * 1000| date:'yyyy-MM-dd HH:mm:ss'}} </td>
+                    <td> {{check.subscription}} </td>
+
+                </tr>
+             
+            </table>
+
+
+
+        </div>
+
+    </div>
+
+</div>
+      

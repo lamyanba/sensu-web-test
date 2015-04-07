@@ -1,0 +1,83 @@
+
+<div class="row-fluid container">
+
+    <div class="row">
+        <div class='container-fluid col-md-8'>
+            <input type="text" ng-model="checksFilter"  class="form-control pull-right" placeholder="Search ... "> 
+        </div>
+        <div class='container-fluid col-md-4'>
+            <button ng-click="reloadPage()" type="button" class="btn btn-primary btn-sm pull-right">Reload Page ({{timer}})</button>
+        </div>
+    </div> <!-- end of div row -->
+    <br />
+        
+    <div class="panel panel-default" >
+            
+       <div class="panel-heading "> Events </div>
+       
+
+
+       <table class="table table-bordered" >
+           <tr>
+               <th>
+
+<!--<div controller="DropdownCtrl"> -->
+                 <div class="btn-group" dropdown is-open="status.isopen">
+                   <button type="button" class="btn btn-primary dropdown-toggle" >
+                     <i class="glyphicon glyphicon-saved" ></i><span class="caret"></span>
+                   </button>
+                   <ul class="dropdown-menu" role="menu">
+                   <ul><!-- 
+                     <li ng-click="checkAll()" ng-model="checkedEvents" ><a data-ng-click="checkAll()"><i class="glyphicon glyphicon-ok"></i> Check All</a></li>
+                      -->
+                     <li><a data-ng-click="checkAll()"><i class="glyphicon glyphicon-ok"></i> Check All</a></li>
+                     <li><a data-ng-click="unCheckAll()"><i class="glyphicon glyphicon-remove"></i> Uncheck All</a></li>
+                     <li class="divider"></li>
+                     <li ng-click="silenceEvents()"><a>Silence Check</a></li>
+                     <li ng-click="silenceClient()"><a>Silence Client</a></li>
+                     <li ng-click="unSilenceEvents()"><a>UnSilence Check</a></li>
+                     <li ng-click="unSilenceClient()"><a>UnSilence Client</a></li>
+                   </ul>
+                 </div>
+
+               </th>
+               <th>Client</th>
+               <th>Check </th>
+               <th>Status</th>
+               <th>Last Check Time</th>
+               <th>Subscription</th>
+           </tr>
+           <tr ng-repeat="event in events | orderBy : 'status': true" ng-switch on="event.status">
+               <td> 
+                   <div class="checkbox">
+ 
+                       <label>
+                           <div ng-if="event.silenced == true">
+                               <input type="checkbox" name="selectedEvents[]" value="{{eventName}}" ng-model="event.selected"><button class="btn btn-primary"> <i class="glyphicon glyphicon-volume-off">  </i></button>
+                           </div>
+                           <div ng-if="event.silenced == false">
+                               <input type="checkbox" name="selectedEvents[]" value="{{eventName}}" ng-model="event.selected"><button class="btn btn-primary"> <i class="glyphicon glyphicon-volume-up">  </i></button>
+                           </div>
+                       </label>
+                   </div>
+
+               </td>
+               <td> <a href="#/clients/{{event.client}}"> {{event.client}} </a> </td>
+               <td> <a href="#/checks/{{event.check}}"> {{event.check}} </a> </td>
+                   <td class="success" ng-switch-when='0'> Ok </td>
+                   <td class="warning" ng-switch-when='1'> Warning</td>
+                   <td class="danger" ng-switch-when='2'> Critical</td>
+                   <td class="info" ng-switch-default> Unknown </td>
+               
+               <td> {{event.issued * 1000| date:'yyyy-MM-dd HH:mm'}} </td>
+               <td> {{event.output}} </td>
+
+           </tr>
+        
+       </table>
+
+    </div>
+
+
+</div>
+      

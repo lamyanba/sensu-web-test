@@ -1,0 +1,73 @@
+
+<div class="row-fluid container">
+
+    <div class="row">
+        <div class='container-fluid col-md-8'>
+            <input type="text" ng-model="checksFilter"  class="form-control pull-right" placeholder="Search ... "> 
+        </div>
+        <div class='container-fluid col-md-4'>
+            <button ng-click="reloadPage()" type="button" class="btn btn-primary btn-sm pull-right">Reload Page ({{timer}})</button>
+        </div>
+    </div> <!-- end of div row -->
+    <br />
+    <div class="panel panel-default" >
+            
+        <div class="panel-heading "> Service Level  Checks </div>
+
+
+       <table class="table table-bordered" >
+           <tr>
+               <th>Check </th>
+               <th>Status</th>
+               <th>Last Check Time</th>
+               <th>Subscription</th>
+           </tr>
+           <tr ng-repeat="(checkname, check) in homeChecksStatus" ng-switch on="check.last_status">
+               <td> <a href="#/checks/{{checkname}}"> {{checkname}} </a> </td>
+                   <td class="success" ng-switch-when='0'> Ok </td>
+                   <td class="warning" ng-switch-when='1'> Warning</td>
+                   <td class="danger" ng-switch-when='2'> Critical</td>
+                   <td class="info" ng-switch-default> Unknown </td>
+               
+               <td> {{check.last_execution * 1000| date:'yyyy-MM-dd HH:mm'}} </td>
+               <td> {{check.subscription}} </td>
+
+           </tr>
+        
+       </table>
+
+    </div>        
+    <div class="panel panel-default" >
+            
+       <div class="panel-heading "> Events </div>
+       
+
+
+       <table class="table table-bordered" >
+           <tr>
+               <th>Client</th>
+               <th>Check </th>
+               <th>Status</th>
+               <th>Last Check Time</th>
+               <th>Subscription</th>
+           </tr>
+           <tr ng-repeat="event in events" ng-switch on="event.status">
+               <td> <a href="#/clients/{{event.client}}"> {{event.client}} </a> </td>
+               <td> <a href="#/checks/{{event.check}}"> {{event.check}} </a> </td>
+                   <td class="success" ng-switch-when='0'> Ok </td>
+                   <td class="warning" ng-switch-when='1'> Warning</td>
+                   <td class="danger" ng-switch-when='2'> Critical</td>
+                   <td class="info" ng-switch-default> Unknown </td>
+               
+               <td> {{event.issued * 1000| date:'yyyy-MM-dd HH:mm'}} </td>
+               <td> {{event.output}} </td>
+
+           </tr>
+        
+       </table>
+
+    </div>
+
+
+</div>
+      

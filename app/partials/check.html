@@ -1,0 +1,22 @@
+<div class="row-fluid container">
+
+
+    <div class="well well-sm">
+        <div class="panel panel-default" >
+           
+                
+            <div class="panel-heading header-fonts"> <h4>{{check.name}} </h4> </div>
+
+            <table class="table table-bordered">
+                <tr ng-repeat="(key, value) in check">
+                    <td>{{key}} </td> 
+                    <td>{{value}} </td> 
+                </tr> 
+                <tr> <td> <button ng-click="requestCheck(check.name)" class="btn btn-primary"> Request Check </button></td> </tr>
+            </table>
+
+
+        </div>
+
+    </div>
+</div>

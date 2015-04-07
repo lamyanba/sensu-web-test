@@ -1,0 +1,40 @@
+<div class="row-fluid container">
+
+        <div class='container-fluid'>
+            <input type="text" ng-model="clientFilter"  class="form-control" placeholder="Search ... "> 
+            <!-- <input class="rounded-div pull-right" type="text" ng-model="checksFilter" placeholder="Search..."/>  -->
+        </div>
+    
+        <br/>
+  <div class="container-fluid well"> 
+    <tabset>
+        <tab ng-repeat="(e, roleClients) in clientsByEnvRole" heading={{e}} active="tlprod" >
+           <accordion close-others="false">
+             <accordion-group ng-repeat="(r, clients) in roleClients" is-open="status.open" >
+
+                <accordion-heading >
+                 {{r}}   <span class="pull-right">Total:{{clients.count}}  Critical:{{clients.critical}}  Warning:{{clients.warning}}</span> 
+                </accordion-heading>
+    
+                <table class="table table-bordered" >
+                    <tr ng-repeat="client in clients.clients" >
+                        <td> <a href="#/clients/{{client.name}}"> {{client.name}} </a> </td>
+                        <td> Checks: {{client.checks}} </td>
+                        <td> Critical: {{client.critical}} </td>
+                        <td> Warning: {{client.warning}} </td>
+                        <td> {{client.timestamp* 1000| date:'yyyy-MM-dd HH:mm'}} </td>
+    
+                    </tr>
+                 
+                </table>
+    
+             </accordion-group>
+
+           </accordian>
+        </tab>
+
+    </tabset>
+  </div>
+
+</div>
+      

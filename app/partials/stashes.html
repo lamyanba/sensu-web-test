@@ -1,0 +1,31 @@
+
+<div class="row-fluid container">
+
+    <div class='container-fluid'>
+        <input type="text" ng-model="stashFilter"  class="form-control pull-right" placeholder="Search ... "> 
+        <!-- <input class="rounded-div pull-right" type="text" ng-model="checksFilter" placeholder="Search..."/>  -->
+    </div>
+    <br />
+    <div class="panel panel-default" >
+            
+        <div class="panel-heading "> Stashes {{count}}</div>
+        <table class="table table-bordered" >
+            <tr>
+                <th>Path</th>
+                <th>Created</th>
+            </tr>
+
+            <tr ng-repeat="stash in stashes | filter: stashFilter" >
+                <td> {{stash.path}} <button ng-click="deleteStash(stash)" class="btn pull-right ng-class:stash.button_class ">{{stash.button_txt}}</button> </td>
+                <td> {{stash.content.timestamp * 1000| date:'yyyy-MM-dd HH:mm' }} </td>
+            </tr>
+         
+        </table>
+ 
+
+    </div>
+
+</div>
+      
+
+

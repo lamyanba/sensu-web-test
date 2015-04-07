@@ -11,7 +11,7 @@ angular.module('SensuWebApp.services', []).
   factory('SensuAPIservice', function($http) {
 
     var sensuAPI = {};
-    var sensuUrl = "http://sensu.thislife.com:8000/api"
+    var sensuUrl = "###url that sensu api is listening on ### "
 
     sensuAPI.getChecks = function() {
       return $http({
